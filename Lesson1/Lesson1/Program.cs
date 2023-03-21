@@ -6,6 +6,7 @@ namespace Lesson1
     {
         static void Main(string[] args)
         {
+            // Коментарий для проверки
             int countQuestions = 5;
             int countRightAnswes = 0;
             string[] questions = GetQuestions(countQuestions);            
