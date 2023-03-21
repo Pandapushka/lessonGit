@@ -41,6 +41,7 @@ namespace Lesson1
             }
 
             Console.WriteLine("Количество верных ответов: " + countRightAnswes);
+            Console.WriteLine("Количество верных ответов: " + countRightAnswes);
             Console.WriteLine("Ваш диагноз: " + diagnoses[countRightAnswes]);
             Console.ReadLine();
 
