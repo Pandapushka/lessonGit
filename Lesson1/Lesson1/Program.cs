@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 
 namespace Lesson1
 {
@@ -48,13 +50,52 @@ namespace Lesson1
                 Console.WriteLine("Количество верных ответов: " + countRightAnswes);
                 string diagnose = CalculateDiagnose(countQuestions, countRightAnswes);
                 Console.WriteLine(userName + ", Ваш диагноз: " + diagnose);
-                bool userChoice = GetUserChoise("Вы хотите начать сначала?");
+
+                SaveUserResult(userName, countRightAnswes, diagnose);
+
+                bool userChoice = GetUserChoise("Вы хотите посмотреть предыдущие результаты?");
+                if (userChoice)
+                {
+                    ShowUserResult();
+                }    
+
+
+                userChoice = GetUserChoise("Вы хотите начать сначала?");
                 if (userChoice == false)
                 {
                     break;
                 }
                 
             }
+        }
+
+
+        static void ShowUserResult()
+        {
+            StreamReader reader = new StreamReader("userResult.txt", Encoding.UTF8);
+            Console.WriteLine("{0,-20}{1,20}{2,10}", "Имя", "Кол-во верных ответов", "Диагноз");
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                string[] values = line.Split('#');
+                string name = values[0];
+                int countRightAnswers = Convert.ToInt32(values[1]);
+                string diagnose = values[2];
+                Console.WriteLine("{0,-20}{1,20}{2,10}", name, countRightAnswers, diagnose);
+            }
+            reader.Close();
+        }
+        static void SaveUserResult(string userName, int countRightAnswes, string diagnose)
+        {
+            string value = $"{userName}#{countRightAnswes}#{diagnose}";
+            AppendToFile("userResult.txt", value);
+        }
+
+        static void AppendToFile(string fileName, string value)
+        {
+            StreamWriter writer = new StreamWriter(fileName, true, Encoding.UTF8);
+            writer.WriteLine(value);
+            writer.Close();
         }
 
         static bool GetUserChoise(string v)
