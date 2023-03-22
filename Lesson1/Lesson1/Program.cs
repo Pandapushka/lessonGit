@@ -6,46 +6,85 @@ namespace Lesson1
     {
         static void Main(string[] args)
         {
-            // Коментарий для проверки
-            int countQuestions = 5;
-            int countRightAnswes = 0;
-            string[] questions = GetQuestions(countQuestions);            
-            int[] answers = GetAnwers(countQuestions);
-            string[] diagnoses = GetDiagnoses(countQuestions+1);
-            Random random = new Random();
 
-            for (int i = 0; i < 1000; i++)
+            while (true)
             {
-                int index1 = random.Next(0, countQuestions);
-                int index2 = random.Next(0, countRightAnswes);
+                Console.WriteLine("Введите свое имя: ");
+                string userName = Console.ReadLine();
+                int countQuestions = 5;
+                int countRightAnswes = 0;
+                string[] questions = GetQuestions(countQuestions);
+                int[] answers = GetAnwers(countQuestions);
+                Random random = new Random();
 
-                string tempQuestion = questions[index1];
-                questions[index1] = questions[index2];
-                questions[index2] = tempQuestion;
-
-                int tempAnswer = answers[index1];
-                answers[index1] = answers[index2];
-                answers[index2] = tempAnswer;
-            }
-
-            for (int i = 0; i < countQuestions; i++)
-            {
-                Console.WriteLine("Вопрос номер: " + (i + 1));
-                Console.WriteLine(questions[i]);
-                int userAnswer = GetUserAnswer();
-
-                int rightAnswer = answers[i];
-                if (userAnswer == rightAnswer)
+                for (int i = 0; i < 1000; i++)
                 {
-                    countRightAnswes++;
+                    int index1 = random.Next(0, countQuestions);
+                    int index2 = random.Next(0, countRightAnswes);
+
+                    string tempQuestion = questions[index1];
+                    questions[index1] = questions[index2];
+                    questions[index2] = tempQuestion;
+
+                    int tempAnswer = answers[index1];
+                    answers[index1] = answers[index2];
+                    answers[index2] = tempAnswer;
+                }
+
+                for (int i = 0; i < countQuestions; i++)
+                {
+                    Console.WriteLine("Вопрос номер: " + (i + 1));
+                    Console.WriteLine(questions[i]);
+                    int userAnswer = GetUserAnswer();
+
+                    int rightAnswer = answers[i];
+                    if (userAnswer == rightAnswer)
+                    {
+                        countRightAnswes++;
+                    }
+                }
+
+
+                Console.WriteLine("Количество верных ответов: " + countRightAnswes);
+                string diagnose = CalculateDiagnose(countQuestions, countRightAnswes);
+                Console.WriteLine(userName + ", Ваш диагноз: " + diagnose);
+                bool userChoice = GetUserChoise("Вы хотите начать сначала?");
+                if (userChoice == false)
+                {
+                    break;
+                }
+                
+            }
+        }
+
+        static bool GetUserChoise(string v)
+        {
+            while (true)
+            {
+                Console.WriteLine(v);
+                string choise = Console.ReadLine();
+                if (choise == "Да" || choise == "да" || choise == "ДА")
+                {
+
+                    return true;
+
+                }
+                else if (choise == "Нет" || choise == "НЕТ" || choise == "нет")
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("Введите: Да или Нет");
                 }
             }
+        }
 
-
-            Console.WriteLine("Количество верных ответов: " + countRightAnswes);
-            Console.WriteLine("Ваш диагноз: " + diagnoses[countRightAnswes]);
-            Console.ReadLine();
-
+        static string CalculateDiagnose(int countQuestions, int countRightAnswes)
+        {
+            string[] diagnoses = GetDiagnoses();
+            int percentRightAnswers = countRightAnswes * 100 / countQuestions;
+            return diagnoses[percentRightAnswers / 20];
         }
 
         static int GetUserAnswer()
@@ -93,9 +132,9 @@ namespace Lesson1
             return answers;
         }
 
-        static string[] GetDiagnoses(int countQuestions)
+        static string[] GetDiagnoses()
         {
-            string[] diagnoses = new string[countQuestions+1];
+            string[] diagnoses = new string[6];
             diagnoses[0] = "Идиот";
             diagnoses[1] = "Кретин";
             diagnoses[2] = "Дурак";
