@@ -30,9 +30,10 @@ namespace Lesson1
 
             for (int i = 0; i < countQuestions; i++)
             {
-                Console.WriteLine("Вопрос номер: " + (i+1));               
+                Console.WriteLine("Вопрос номер: " + (i + 1));
                 Console.WriteLine(questions[i]);
-                int userAnswer = Convert.ToInt32(Console.ReadLine());
+                int userAnswer = GetUserAnswer();
+
                 int rightAnswer = answers[i];
                 if (userAnswer == rightAnswer)
                 {
@@ -40,11 +41,35 @@ namespace Lesson1
                 }
             }
 
-            Console.WriteLine("Количество верных ответов: " + countRightAnswes);
+
             Console.WriteLine("Количество верных ответов: " + countRightAnswes);
             Console.WriteLine("Ваш диагноз: " + diagnoses[countRightAnswes]);
             Console.ReadLine();
 
+        }
+
+        static int GetUserAnswer()
+        {
+            
+            while (true)
+            {
+                try
+                {
+                    return Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Введите число");
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Введите число от -2*10^9 до 2*10^9");
+                }
+                
+
+            }
+
+            
         }
 
         static string[] GetQuestions(int countQuestions)
