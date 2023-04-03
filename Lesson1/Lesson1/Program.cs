@@ -30,7 +30,7 @@ namespace Lesson1
                     var randomQuestionsIndex = random.Next(0, questions.Count);
                     Console.WriteLine(questions[randomQuestionsIndex].Text);
                     
-                    int userAnswer = GetUserAnswer();
+                    int userAnswer = GetNumber();
 
                     int rightAnswer = questions[randomQuestionsIndex].Answer;
                     if (userAnswer == rightAnswer)
@@ -53,7 +53,19 @@ namespace Lesson1
                 if (userChoice)
                 {
                     ShowUserResult();
-                }    
+                }
+
+                userChoice = GetUserChoise("Хотите добавить новый вопрос?");
+                if (userChoice)
+                {
+                    AddNewQuestion();
+                }
+
+                userChoice = GetUserChoise("Хотите удалить вопрос?");
+                if (userChoice)
+                {
+                    RemoveQestion();
+                }
 
 
                 userChoice = GetUserChoise("Вы хотите начать сначала?");
@@ -65,6 +77,39 @@ namespace Lesson1
             }
         }
 
+        private static void RemoveQestion()
+        {
+            Console.WriteLine("Введите номер удаляемого вопроса");
+            var questions = QuestionsStorage.GetAll();
+            for (int i = 0; i < questions.Count; i++)
+            {
+                Console.WriteLine((i+1) + ". " + questions[i].Text);
+            }
+            var removeQuestionNumber = GetNumber();
+            while (removeQuestionNumber < 1 || removeQuestionNumber > questions.Count)
+            {
+                Console.WriteLine("Введите число от 1 до " + questions.Count);
+                removeQuestionNumber = GetNumber();
+            }
+
+            var removeQuestion = questions[removeQuestionNumber - 1];
+            QuestionsStorage.Remove(removeQuestion);
+
+
+        }
+
+        private static void AddNewQuestion()
+        {
+            Console.WriteLine("Введите текст вопроса?");
+            var text = Console.ReadLine();
+            Console.WriteLine("Введите ответ на вопрос:?");
+            var answer = GetNumber();
+
+            var newQuesdtion = new Question(text, answer);
+            QuestionsStorage.Add(newQuesdtion);
+
+
+        }
 
         static void ShowUserResult()
         {
@@ -107,7 +152,7 @@ namespace Lesson1
             return diagnoses[percentRightAnswers / 20];
         }
 
-        static int GetUserAnswer()
+        static int GetNumber()
         {
             
             while (true)
