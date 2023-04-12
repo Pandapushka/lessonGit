@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ClassLibrary1;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace Lesson1
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -43,7 +44,7 @@ namespace Lesson1
 
 
                 Console.WriteLine("Количество верных ответов: " + user.CountRightAnswers);
-                var diagnose = CalculateDiagnose(countQuestions, user.CountRightAnswers);
+                var diagnose = DiagnoseCalcul.CalculateDiagnose(countQuestions, user.CountRightAnswers);
                 user.Diagnose = diagnose;
                 Console.WriteLine(userName + ", Ваш диагноз: " + diagnose);
 
@@ -145,13 +146,6 @@ namespace Lesson1
             }
         }
 
-        static string CalculateDiagnose(int countQuestions, int countRightAnswes)
-        {
-            string[] diagnoses = GetDiagnoses();
-            int percentRightAnswers = countRightAnswes * 100 / countQuestions;
-            return diagnoses[percentRightAnswers / 20];
-        }
-
         static int GetNumber()
         {
             
@@ -178,16 +172,6 @@ namespace Lesson1
 
        
 
-        static string[] GetDiagnoses()
-        {
-            string[] diagnoses = new string[6];
-            diagnoses[0] = "Идиот";
-            diagnoses[1] = "Кретин";
-            diagnoses[2] = "Дурак";
-            diagnoses[3] = "Нормальный";
-            diagnoses[4] = "Талант";
-            diagnoses[5] = "Гений";
-            return diagnoses;
-        }
+        
     }
 }

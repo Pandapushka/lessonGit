@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson1
+namespace ClassLibrary1
 {
     public class User
     {
@@ -15,7 +15,7 @@ namespace Lesson1
         public User(string name)
         {
             Name = name;
-            Diagnose = "Неизвестно";
+            Diagnose = "Не известно";
         }
         public void AcceptRightAnswer()
         {
