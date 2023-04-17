@@ -98,5 +98,22 @@ namespace WindowsFormsApp1
             var resultsForm = new ResultsForm();
             resultsForm.ShowDialog();
         }
+
+        private void вопросыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void добавитьНовыйВопросToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newQuestionForm = new AddNewQuestionForm();
+            newQuestionForm.ShowDialog();
+        }
+
+        private void cписокВопросовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var questionListForm = new QuestionsListForm();
+            questionListForm.ShowDialog();
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace Lesson1
                 user.Diagnose = diagnose;
                 Console.WriteLine(userName + ", Ваш диагноз: " + diagnose);
 
-                UserResultsStorage.Save(user);
+                UserResultsStorage.Append(user);
 
                 bool userChoice = GetUserChoise("Вы хотите посмотреть предыдущие результаты?");
                 if (userChoice)

@@ -48,7 +48,7 @@ namespace ClassLibrary1
         {
             var diagnose = DiagnoseCalcul.CalculateDiagnose(countQuestions, user.CountRightAnswers);
             user.Diagnose = diagnose;
-            UserResultsStorage.Save(user);
+            UserResultsStorage.Append(user);
             return user.Name + ", Ваш диагноз: " + diagnose;
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,25 +9,14 @@ namespace ClassLibrary1
 {
     public class QuestionsStorage
     {
+        public static string Path = "questions.json";
         public static List<Question> GetAll()
         {
             var questions = new List<Question>();
-            if (FileProvider.Exists("questions.txt"))
+            if (FileProvider.Exists(Path))
             {
-                var value = FileProvider.GetValue("questions.txt");
-                var lines = value.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var line in lines)
-                {
-
-                    string[] values = line.Split('#');
-                    string text = values[0];
-                    int answer = Convert.ToInt32(values[1]);
-
-
-                    var question = new Question(text, answer);
-                    questions.Add(question);
-
-                }
+                var value = FileProvider.GetValue(Path);
+                questions = JsonConvert.DeserializeObject<List<Question>>(value);
             }
             else
             {
@@ -45,16 +35,15 @@ namespace ClassLibrary1
 
         private static void SaveQestions(List<Question> questions)
         {
-            foreach (var question in questions)
-            {
-                Add(question);
-            }
+            var jsonData = JsonConvert.SerializeObject(questions);
+            FileProvider.Replase(Path, jsonData);
         }
 
         public static void Add(Question newQuesdtion)
         {
-            string value = $"{newQuesdtion.Text}#{newQuesdtion.Answer}";
-            FileProvider.Append("questions.txt", value);
+            var questions = GetAll();
+            questions.Add(newQuesdtion);
+            SaveQestions(questions);
         }
 
         public static void Remove(Question removeQuestion)
@@ -68,7 +57,21 @@ namespace ClassLibrary1
                     break;
                 }
             }
-            FileProvider.Clear("questions.txt");
+           
+            SaveQestions(questions);
+        }
+        public static void Remove(string text)
+        {
+            var questions = GetAll();
+            for (int i = 0; i < questions.Count; i++)
+            {
+                if (questions[i].Text == text)
+                {
+                    questions.RemoveAt(i);
+                    break;
+                }
+            }
+
             SaveQestions(questions);
         }
     }

@@ -44,7 +44,7 @@
             this.DiagnoseColumn});
             this.resultsDataGridView.Location = new System.Drawing.Point(12, 12);
             this.resultsDataGridView.Name = "resultsDataGridView";
-            this.resultsDataGridView.Size = new System.Drawing.Size(349, 367);
+            this.resultsDataGridView.Size = new System.Drawing.Size(355, 279);
             this.resultsDataGridView.TabIndex = 0;
             // 
             // UserNameColumn
@@ -66,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 387);
+            this.ClientSize = new System.Drawing.Size(379, 303);
             this.Controls.Add(this.resultsDataGridView);
             this.Name = "ResultsForm";
             this.Text = "ResultsForm";

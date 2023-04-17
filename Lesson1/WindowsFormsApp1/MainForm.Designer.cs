@@ -37,6 +37,10 @@
             this.показатьРезультатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рестартToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вопросыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьНовыйВопросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВопросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cписокВопросовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +86,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.вопросыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(891, 24);
@@ -120,6 +125,37 @@
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
+            // вопросыToolStripMenuItem
+            // 
+            this.вопросыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cписокВопросовToolStripMenuItem,
+            this.добавитьНовыйВопросToolStripMenuItem,
+            this.удалитьВопросToolStripMenuItem});
+            this.вопросыToolStripMenuItem.Name = "вопросыToolStripMenuItem";
+            this.вопросыToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.вопросыToolStripMenuItem.Text = "Вопросы";
+            this.вопросыToolStripMenuItem.Click += new System.EventHandler(this.вопросыToolStripMenuItem_Click);
+            // 
+            // добавитьНовыйВопросToolStripMenuItem
+            // 
+            this.добавитьНовыйВопросToolStripMenuItem.Name = "добавитьНовыйВопросToolStripMenuItem";
+            this.добавитьНовыйВопросToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.добавитьНовыйВопросToolStripMenuItem.Text = "Добавить новый вопрос";
+            this.добавитьНовыйВопросToolStripMenuItem.Click += new System.EventHandler(this.добавитьНовыйВопросToolStripMenuItem_Click);
+            // 
+            // удалитьВопросToolStripMenuItem
+            // 
+            this.удалитьВопросToolStripMenuItem.Name = "удалитьВопросToolStripMenuItem";
+            this.удалитьВопросToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.удалитьВопросToolStripMenuItem.Text = "Удалить вопрос";
+            // 
+            // cписокВопросовToolStripMenuItem
+            // 
+            this.cписокВопросовToolStripMenuItem.Name = "cписокВопросовToolStripMenuItem";
+            this.cписокВопросовToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.cписокВопросовToolStripMenuItem.Text = "Cписок вопросов";
+            this.cписокВопросовToolStripMenuItem.Click += new System.EventHandler(this.cписокВопросовToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,6 +188,10 @@
         private System.Windows.Forms.ToolStripMenuItem показатьРезультатыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рестартToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вопросыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьНовыйВопросToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВопросToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cписокВопросовToolStripMenuItem;
     }
 }
 

@@ -17,6 +17,15 @@ namespace ClassLibrary1
             writer.Close();
         }
 
+
+        public static void Replase(string fileName, string value)
+        {
+            StreamWriter writer = new StreamWriter(fileName, false, Encoding.UTF8);
+            writer.WriteLine(value);
+            writer.Close();
+        }
+
+
         public static string GetValue(string fileName)
         {
             var reader = new StreamReader(fileName, Encoding.UTF8);
